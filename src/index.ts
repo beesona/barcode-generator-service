@@ -8,20 +8,23 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ?bcid=code128 - Barcode type
+// ?bcid=code128 - Barcode type (We set it to code128 if it isnt provided)
 // &text=978-1-56581-231-4+52250 - Text to encode
 // &includetext - Show human-readable text
 // &guardwhitespace - Add whitespace to the left and right of the barcode
 app.get('/', (req, res) => {
     if (!req.url.includes('bcid=')) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Unknown request format. Missing bcid query string', 'utf8');
+        // add bcid to the url
+        if (req.url.includes('?')) {
+            req.url += '&bcid=code128';
+        } else {
+            req.url += '?bcid=code128';
+        }
     } else if (!req.url.includes('text=')) {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Missing text query string', 'utf8');
-    } else {
-        bwipjs.request(req, res);
     }
+    bwipjs.request(req, res);
 });
 
 app.get('/svg', (req, res) => {
