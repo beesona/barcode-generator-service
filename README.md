@@ -1,3 +1,5 @@
+![barcode image](barcode.png)
+
 # To run this with TSX in watch mode.
 
 -   install dev-dependency tsx `npm i --save-dev tsx`
