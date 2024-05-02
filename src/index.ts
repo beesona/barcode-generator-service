@@ -20,11 +20,13 @@ app.get('/', (req, res) => {
         } else {
             req.url += '?bcid=code128';
         }
-    } else if (!req.url.includes('text=')) {
+    }
+    if (!req.url.includes('text=')) {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Missing text query string', 'utf8');
+    } else { 
+        bwipjs.request(req, res);
     }
-    bwipjs.request(req, res);
 });
 
 app.get('/svg', (req, res) => {
