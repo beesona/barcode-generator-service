@@ -1,5 +1,3 @@
-// create a test for the get method in the index file
-
 import { expect } from 'chai';
 import supertest from 'supertest';
 import { app } from '../src/index';
