@@ -5,7 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha test/**/*.spec.ts",
-        "start": "npx tsx ./src/index.ts"
+        "start:local": "npx tsx ./src/index.ts",
+        "start": "node ./dist/src/index.js",
+        "start:otl": "node --require ./dist/src/instrumentation.js ./dist/src/index.js"
     },
     "keywords": [],
     "author": "",
@@ -17,14 +19,30 @@
         "@types/mocha": "^10.0.6",
         "@types/node": "^20.12.7",
         "@types/supertest": "^6.0.2",
+        "@types/swagger-jsdoc": "^6.0.4",
+        "@types/swagger-ui-express": "^4.1.6",
         "chai": "^5.1.0",
         "mocha": "^10.4.0",
         "supertest": "^7.0.0",
         "tsx": "^4.8.2"
     },
     "dependencies": {
+        "@opentelemetry/api": "^1.8.0",
+        "@opentelemetry/auto-instrumentations-node": "^0.44.0",
+        "@opentelemetry/exporter-metrics-otlp-http": "^0.50.0",
+        "@opentelemetry/exporter-trace-otlp-http": "^0.50.0",
+        "@opentelemetry/instrumentation-express": "^0.37.0",
+        "@opentelemetry/instrumentation-http": "^0.50.0",
+        "@opentelemetry/instrumentation-pino": "^0.37.0",
+        "@opentelemetry/sdk-metrics": "^1.23.0",
+        "@opentelemetry/sdk-node": "^0.50.0",
+        "@opentelemetry/sdk-trace-node": "^1.23.0",
+        "@opentelemetry/sdk-trace-web": "^1.23.0",
         "bwip-js": "^4.3.2",
         "dotenv": "^16.4.5",
-        "express": "^4.19.2"
+        "express": "^4.19.2",
+        "pino": "^8.20.0",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1"
     }
 }
