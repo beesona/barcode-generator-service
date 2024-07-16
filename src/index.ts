@@ -41,6 +41,9 @@ app.use(express.urlencoded({ extended: true }));
  *         default: false
  *         type: boolean
  *         in: query
+ *     responses:
+ *       200:
+ *         description: OK
  */
 app.get('/', (req, res) => {
     try {
